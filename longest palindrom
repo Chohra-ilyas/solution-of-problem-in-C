@@ -1,0 +1,40 @@
+#include<stdio.h>
+int main(){
+	char pal[100];
+	int i,j,count=0,z=0,k=0,t=0,a,b,save=0;
+	bool same;	
+	printf("enter phrase and the program find the lergest palindrom on there :\n");
+	scanf("%s",&pal);
+	while(pal[i]!='\0'){
+		z++;
+		i++;
+	}
+	for(i=0;i<z;i++){
+		for(j=i+1;j<z;j++){
+			if(pal[i]==pal[j]){
+				count=0;
+			    same=true;
+			    a=i;
+			    b=j;
+				while(a<b && same==true){
+					a++;
+					b--;
+					if(pal[a]!=pal[b]){
+						same=false;
+					}
+					count++;	
+				}
+				if(same==true){
+			    	if(count>save){
+			        	t=i;
+			        	k=j;
+			        	save=count;
+					}	
+				}
+			}	
+		}
+	}
+	for(i=t;i<=k;i++){
+		printf("%c",pal[i]);
+	}
+}
