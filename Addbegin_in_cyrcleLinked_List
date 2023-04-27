@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node
+{
+	int data;
+	struct node *next;
+} node;
+node *addbegin(node *s, node *e, int x)
+{
+	node *p = (node *)malloc(sizeof(node));
+	p->data = x;
+	p->next = s;
+	s = p;
+	if (e == NULL)
+		e = s;
+	e->next = s;
+	return e;
+}
+int main(int argc, char *argv[])
+{
+	node *head = NULL, *qtr = NULL, *ptr;
+	int i, num, length, k;
+	printf("enter number of list : ");
+	scanf("%d", &num);
+	for (i = 0; i < num; i++)
+	{
+		qtr = addbegin(head, qtr, i + 1);
+		head = qtr->next;
+	}
+	ptr = head;
+	do
+	{
+		printf("%d-", ptr->data);
+		ptr = ptr->next;
+	} while (ptr != head);
+}
